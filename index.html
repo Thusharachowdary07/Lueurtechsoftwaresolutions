@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    body {
+  background-image: url('signup.gif');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
+/* Style all input fields */
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+input[type=text], select ,input[type=email],input[type=password]{
+
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+border: 6px solid black;
+
+font-size: 14px;
+
+border-radius: 4px;
+}
+
+/* Style the submit button */
+button[type=submit] {
+ 
+ background-color:pink;
+ color:black;
+ padding: 14px 20px;
+ margin: 8px 0;
+ font-style:italic;
+
+ border-radius: 4px;
+ border: 2px solid black;
+ font-size:20px;
+ position: absolute;
+    top: 90%;
+    left: 48%;
+
+ cursor: pointer;
+}
+
+button[type=submit]:hover {
+ background-color: black;
+ color:white;
+
+}
+
+/* Style the container for inputs */
+.container {
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* The message box is shown when the user clicks on the password field */
+#message {
+  display:none;
+  background:pink;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+ 
+  border: 3px solid black;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
+}
+.welcomemessage{
+    font-size: 150%;
+   
+}
+.scroll-right {
+ height: 50px;	
+ overflow: hidden;
+ position: relative;
+ background: pink;
+ color: black;
+ border: 5px solid black;
+ font-size:32px;
+}
+.scroll-right p {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ margin: 0;
+ line-height: 50px;
+ text-align: center;
+ /* Starting position */
+ -moz-transform:translateX(100%);
+ -webkit-transform:translateX(100%);	
+ transform:translateX(100%);
+ /* Apply animation to this element */	
+ -moz-animation: scroll-right 15s linear infinite;
+ -webkit-animation: scroll-right 15s linear infinite;
+ animation: scroll-right 15s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes scroll-right {
+ 0%   { -moz-transform: translateX(-100%); }
+ 100% { -moz-transform: translateX(100%); }
+}
+@-webkit-keyframes scroll-right {
+ 0%   { -webkit-transform: translateX(-100%); }
+ 100% { -webkit-transform: translateX(100%); }
+}
+@keyframes scroll-right {
+ 0%   { 
+ -moz-transform: translateX(-100%); /* Browser bug fix */
+ -webkit-transform: translateX(-100%); /* Browser bug fix */
+ transform: translateX(-100%); 		
+ }
+ 100% { 
+ -moz-transform: translateX(100%); /* Browser bug fix */
+ -webkit-transform: translateX(100%); /* Browser bug fix */
+ transform: translateX(100%); 
+ }
+}
+.group{
+    font-size: 25px;
+
+}
+
+</style>
+</head>
+<body>
+    
+    
+    
+
+    
+    
+<b><p id="demo" class="welcomemessage" align="center"></p></b>
+
+<div class="scroll-right">
+    <p>Subsribe to our page and get the latest updates and best discounts!</p>
+    </div>
+            </div>
+<script>
+const hour = new Date().getHours();
+let greeting;
+
+if (hour < 10) {
+greeting = "Good morning,Welcome to sign up page";
+} else if(hour < 18) {
+greeting = "Good afternoon,Welcome to sign up page";
+}
+else{
+greeting = "Good evening,Welcome to sign up page";
+}
+
+document.getElementById("demo").innerHTML = greeting;
+</script>
+<h3>Enter your details below:</h3>
+
+
+<form id="myForm" align="center">
+
+
+
+    <b><label for="username" class="group">Username</label></b>
+    <input type="text"  id="username" name="username"  required>
+    <b><label for="gender" class="group">Gender</label></b>
+    <input type="text" id="gender" name="Gender" required>
+    <b><label for="email" class="group">Email</label></b>
+    <input type="text" id="email" name="email" required>
+
+    <b><label for="psw" class="group">Password</label></b>
+    <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10}" title="Must contain at least one number and one uppercase and lowercase letter, and maximum 10 characters" required>
+    <br>
+    <br>
+    <br>
+  
+    <button type="submit" value="Submit" class="btn">Submit<i class="fas fa-paper-plane"></i></button>
+   
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ 
+
+
+<div id="message">
+  <h3>Password must contain the following:</h3>
+  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+  <p id="number" class="invalid">A <b>number</b></p>
+
+  <p id="length" class="invalid">Maximum <b>10 characters</b></p>
+
+</div>
+</form>
+				
+<script>
+    
+var myInput = document.getElementById("psw");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+}
+
+// When the user clicks outside of the password field, hide the message box
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+
+// When the user starts to type something inside the password field
+myInput.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {  
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+  }
+  
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {  
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {  
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+  
+  // Validate length
+  if(myInput.value.length >10 ) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+}
+</script>
+
+</body>
+</html>
